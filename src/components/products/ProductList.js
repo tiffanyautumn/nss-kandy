@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Navigate, useNavigate } from "react-router-dom"
 
-export const CandyList = () => {
+export const ProductList = () => {
     const [products, setProducts] = useState([])
     const [filteredProducts, setFiltered] = useState([])
     const [high, setHigh] = useState(false)
@@ -23,7 +23,6 @@ export const CandyList = () => {
         [] // When this array is empty, you are observing initial component state
     )
 
-    
     useEffect(
         () => {
             if (high) {
