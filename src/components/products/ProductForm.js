@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
-export const CandyForm = () => {
+export const ProductForm = () => {
     const navigate = useNavigate()
     const [types, settypes] = useState([])
 
@@ -18,6 +18,7 @@ export const CandyForm = () => {
     const localKandyUser = localStorage.getItem("kandy_user")
     const kandyUserObject = JSON.parse(localKandyUser)
 
+    
     useEffect(
         () => {
             fetch(`http://localhost:8088/types`)
@@ -37,7 +38,7 @@ export const CandyForm = () => {
         const ticketToSendToAPI = {
             name: product.name,
             typeId: product.typeId,
-            price: product.price
+            price: parseFloat(product.price)
             
         }
 
@@ -84,14 +85,14 @@ export const CandyForm = () => {
                         required autoFocus
                         type="number"
                         className="form-control"
-                        placeholder="1.00"
-                        // step="0.01"
+                        placeholder= "0.99"
+                        step="0.01"
                         // min="0"
                         value={product.price}
                         onChange={
                             (evt) => {
                                 const copy = {...product}
-                                copy.price = evt.target.value
+                                copy.price = (evt.target.value)
                                 update(copy)
                             }
                         } />
